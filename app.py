@@ -4,8 +4,7 @@ import prediction
 
 
 st.set_page_config(
-    page_title='Weather Image Classification',
-    layout='wide'
+    page_title='Weather Image Classification'
 )
 
 
