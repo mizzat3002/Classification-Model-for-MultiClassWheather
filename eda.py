@@ -7,20 +7,16 @@ sns.set_style('whitegrid')
 
 
 def run():
-    st.title('📊 Exploratory Data Analysis (EDA)')
+    st.title('Exploratory Data Analysis (EDA)')
     st.markdown('''
-    Halaman ini menampilkan ringkasan hasil eksplorasi data (EDA) yang dilakukan
-    terhadap **Multi-class Weather Dataset** (1.125 gambar, 4 kelas cuaca) sebelum
+    Halaman ini menampilkan hasil eksplorasi data (EDA) yang dilakukan terhadap **Multi-class Weather Dataset** (1.125 gambar, 4 kelas cuaca) sebelum
     dipakai untuk melatih model.
     ''')
     st.markdown('---')
 
-    # ============================================================
-    # 1. Distribusi jumlah data per kelas
-    # ============================================================
+    # distribusi jumlah data per kelas
     st.subheader('1. Distribusi Data per Kelas')
 
-    # Angka ini diambil dari hasil EDA di notebook (grand total = 1.125 gambar)
     distribusi = {
         'Cloudy': 300,
         'Rain': 215,
@@ -32,21 +28,15 @@ def run():
         'Jumlah Gambar': list(distribusi.values())
     })
 
-    col1, col2 = st.columns([2, 1])
-
-    with col1:
-        fig, ax = plt.subplots(figsize=(7, 4.5))
-        sns.barplot(data=df_distribusi, x='Kelas', y='Jumlah Gambar', palette='Set2', ax=ax)
-        ax.set_title('Distribusi Data per Kelas Cuaca', fontsize=13, fontweight='bold')
-        ax.set_xlabel('Kelas')
-        ax.set_ylabel('Jumlah Gambar')
-        for i, v in enumerate(df_distribusi['Jumlah Gambar']):
-            ax.text(i, v + 5, str(v), ha='center', fontweight='bold')
-        st.pyplot(fig)
-
-    with col2:
-        st.dataframe(df_distribusi, use_container_width=True)
-        st.metric('Total Gambar', '1.125')
+    
+    fig, ax = plt.subplots(figsize=(7, 4.5))
+    sns.barplot(data=df_distribusi, x='Kelas', y='Jumlah Gambar', palette='Set2', ax=ax)
+    ax.set_title('Distribusi Data per Kelas Cuaca', fontsize=13, fontweight='bold')
+    ax.set_xlabel('Kelas')
+    ax.set_ylabel('Jumlah Gambar')
+    for i, v in enumerate(df_distribusi['Jumlah Gambar']):
+        ax.text(i, v + 5, str(v), ha='center', fontweight='bold')
+    st.pyplot(fig)
 
     st.markdown('''
     **Insight:** Dataset ini punya distribusi yang lumayan merata di 4 kelas.
@@ -58,12 +48,11 @@ def run():
 
     st.markdown('---')
 
-    # ============================================================
-    # 2. Ukuran dimensi gambar
-    # ============================================================
+
+    # ukuran dimensi gambar
     st.subheader('2. Ukuran Dimensi Gambar')
     st.markdown('''
-    Gambar-gambar dalam dataset ini punya ukuran (dimensi piksel) yang **sangat
+    Gambar-gambar dalam dataset ini punya size pixel yang **sangat
     beragam** — ada yang kecil, ada yang besar, dengan rasio lebar-tinggi yang
     berbeda-beda juga, karena diambil dari sumber foto yang berbeda-beda.
 
@@ -73,9 +62,8 @@ def run():
 
     st.markdown('---')
 
-    # ============================================================
-    # 3. Tingkat kecerahan (brightness) per kelas
-    # ============================================================
+   
+    # tingkat kecerahan (brightness) per kelas
     st.subheader('3. Tingkat Kecerahan (Brightness) per Kelas')
 
     brightness = {
@@ -89,16 +77,13 @@ def run():
         'Rata-rata Brightness': list(brightness.values())
     })
 
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        fig2, ax2 = plt.subplots(figsize=(7, 4.5))
-        sns.barplot(data=df_brightness, x='Kelas', y='Rata-rata Brightness', palette='mako', ax=ax2)
-        ax2.set_title('Rata-rata Tingkat Kecerahan per Kelas Cuaca', fontsize=13, fontweight='bold')
-        ax2.set_xlabel('Kelas')
-        ax2.set_ylabel('Rata-rata Nilai Piksel (0-255)')
-        st.pyplot(fig2)
-    with col2:
-        st.dataframe(df_brightness, use_container_width=True)
+    
+    fig2, ax2 = plt.subplots(figsize=(7, 4.5))
+    sns.barplot(data=df_brightness, x='Kelas', y='Rata-rata Brightness', palette='mako', ax=ax2)
+    ax2.set_title('Rata-rata Tingkat Kecerahan per Kelas Cuaca', fontsize=13, fontweight='bold')
+    ax2.set_xlabel('Kelas')
+    ax2.set_ylabel('Rata-rata Nilai Piksel (0-255)')
+    st.pyplot(fig2)
 
     st.markdown('''
     **Insight:**
