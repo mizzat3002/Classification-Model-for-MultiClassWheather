@@ -28,7 +28,7 @@ def run():
         'Jumlah Gambar': list(distribusi.values())
     })
 
-    col1, col2, col3 = st.columns([4, 4, 1])
+    col1, col2, col3 = st.columns([1, 6, 1])
     with col2:
         fig, ax = plt.subplots(figsize=(6, 3.5))
         sns.barplot(data=df_distribusi, x='Kelas', y='Jumlah Gambar', palette='Set2', ax=ax)
@@ -76,7 +76,7 @@ def run():
         'Rata-rata Brightness': list(brightness.values())
     })
 
-    col1, col2, col3 = st.columns([4, 4, 1])
+    col1, col2, col3 = st.columns([1, 6, 1])
     with col2:
         fig2, ax2 = plt.subplots(figsize=(6, 3.5))
         sns.barplot(data=df_brightness, x='Kelas', y='Rata-rata Brightness', palette='mako', ax=ax2)
