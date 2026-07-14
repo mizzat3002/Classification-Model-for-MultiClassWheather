@@ -34,7 +34,13 @@ def load_my_model():
     model.load_weights(WEIGHTS_PATH)   
     return model
 
-model = load_my_model()
+# fungsi buat run app
+def run():
+    try:
+        model = load_my_model()
+    except Exception as e:
+        st.error(f'Gagal memuat model. Pastikan file {WEIGHTS_PATH} ada di repo. Detail: {e}')
+        return
 
 # interface web
 st.title('Prediksi Kondisi Cuaca')
