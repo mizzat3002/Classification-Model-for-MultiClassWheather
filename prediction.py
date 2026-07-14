@@ -7,7 +7,7 @@ import tensorflow as tf
 # ============================================================
 # Konfigurasi
 # ============================================================
-MODEL_PATH = 'model_tl_mobilenetv2.weights.h5'
+MODEL_PATH = 'model_tl_mobilenetv2.h5'
 IMG_HEIGHT = 220
 IMG_WIDTH = 220
 
