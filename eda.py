@@ -29,7 +29,7 @@ def run():
     })
 
     
-    fig, ax = plt.subplots(figsize=(6, 3.5))
+    fig, ax = plt.subplots(figsize=(3, 1.5))
     sns.barplot(data=df_distribusi, x='Kelas', y='Jumlah Gambar', palette='Set2', ax=ax)
     ax.set_title('Distribusi Data per Kelas Cuaca', fontsize=13, fontweight='bold')
     ax.set_xlabel('Kelas')
@@ -78,7 +78,7 @@ def run():
     })
 
     
-    fig2, ax2 = plt.subplots(figsize=(6, 3.5))
+    fig2, ax2 = plt.subplots(figsize=(3, 1.5))
     sns.barplot(data=df_brightness, x='Kelas', y='Rata-rata Brightness', palette='mako', ax=ax2)
     ax2.set_title('Rata-rata Tingkat Kecerahan per Kelas Cuaca', fontsize=13, fontweight='bold')
     ax2.set_xlabel('Kelas')
