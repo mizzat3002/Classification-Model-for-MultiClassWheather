@@ -84,7 +84,7 @@ def run():
         ax2.set_title('Rata-rata Tingkat Kecerahan per Kelas Cuaca', fontsize=13, fontweight='bold')
         ax2.set_xlabel('Kelas')
         ax2.set_ylabel('Rata-rata Nilai Piksel (0-255)')
-        fig.tight_layout()
+        fig2.tight_layout()
         st.pyplot(fig2)
 
     st.markdown('''
