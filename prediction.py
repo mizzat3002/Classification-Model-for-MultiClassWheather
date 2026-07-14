@@ -46,6 +46,9 @@ def preprocess_image(image: Image.Image):
 
 
 def run():
+    import os
+    st.warning(f"DEBUG - Working directory saat ini: `{os.getcwd()}`")
+    st.warning(f"DEBUG - Isi folder ini: {os.listdir('.')}")
     st.title('🔮 Prediksi Kondisi Cuaca')
     st.markdown('''
     Unggah sebuah foto (langit/kondisi cuaca), lalu model akan menebak apakah foto
