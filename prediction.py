@@ -68,6 +68,42 @@ def run():
 
         # hasil tebakan 
         st.write('---')
+        st.write(f'### Hasil Tebakan: :green[{pred_label}]') 
+        st.write(f'Tingkat Keyakinan: **{confidence:.2f}%**')
+        st.write('---')# fungsi buat run app
+def run():
+    try:
+        model = load_my_model()
+    except Exception as e:
+        st.error(f'Gagal memuat model. Pastikan file {WEIGHTS_PATH} ada di repo. Detail: {e}')
+        return
+
+    # interface web
+    st.title('Prediksi Kondisi Cuaca')
+    st.write('Upload Image, program akan memprediksi kondisi cuaca')
+
+    # tombol untuk upload 
+    uploaded_file = st.file_uploader('Pilih file image (Format: JPG/PNG)', type=['jpg', 'jpeg', 'png'])
+
+    if uploaded_file is not None:
+        # tampilkan gambar yang di-upload
+        image = Image.open(uploaded_file)
+        st.image(image, width=300)
+    
+        # preprocessing gambar 
+        img_rgb = image.convert('RGB')
+        img_resized = img_rgb.resize((IMG_WIDTH, IMG_HEIGHT))
+        img_array = np.array(img_resized).astype('float32') / 255.0
+        img_array = np.expand_dims(img_array, axis=0)
+
+        # prrediksi 
+        predictions = model.predict(img_array)[0]
+        pred_idx = np.argmax(predictions)
+        pred_label = CLASS_NAMES[pred_idx]
+        confidence = predictions[pred_idx] * 100
+
+        # hasil tebakan 
+        st.write('---')
         st.write(f'### Hasil Tebakan: **{pred_label}**')
         st.write(f'Tingkat Keyakinan: **{confidence:.2f}%**')
         st.write('---')
